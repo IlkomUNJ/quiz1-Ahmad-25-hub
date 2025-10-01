@@ -18,8 +18,24 @@ int main() {
         cin >> choice;
         prompt = static_cast<PrimaryPrompt>(choice - 1);
         switch (prompt) {
-            case LOGIN:
+            case LOGIN: {
                 cout << "Login selected." << endl;
+
+                bool regpromt = true;
+                while(regpromt){
+                    cout << "\n=== Buyer Logged In Successfully ===" << endl;
+                    cout << "Welcome!" << endl;
+                    cout << "select option"<<endl;
+                    cout << "1. check account status"<<endl;
+                    cout << "2. upgrade account to seller"<<endl;
+                    cout << "3. back"<<endl;
+                    cin >> choice;
+
+                    if(choice == 3){
+                        regpromt = false; 
+                    }
+                }
+            
                 /* if Login is selected, based on authority then provide options:
                 assume user is logged in as Buyer for now
                 1. Chek Account Status (will display if user is Buyer or Seller or both and linked banking account status)
@@ -70,9 +86,61 @@ int main() {
                 9. Exit to main Menu
                 10. Exit Program
                 **/
-                break;
-            case REGISTER:
-                cout << "Register selected." << endl;
+                break;}
+            case REGISTER:{
+                bool regpromt = true;
+                while(regpromt){
+                    cout << "Register selected." << endl;
+                    cout << "select option"<<endl;
+                    cout << "1. create buyer account"<<endl;
+                    cout<< "2. create seller account"<<endl;
+                    cout << "3. back"<<endl;
+                    int regchoice;
+                    cin>>regchoice;
+                    if(regchoice == 1){
+                        cout<< "create buyer account selected"<<endl;
+                        // Input data Buyer
+                        int nextBuyerId = 1;
+                        string emailBuyer;
+                        string namaBuyer;
+                        string homeAddres;
+                        int phoneNumber;
+                        cout << "input your email: "<<endl;
+                        cin >> emailBuyer;
+                        cin.ignore(); 
+                        cout << "input your name: "<<endl;
+                        getline(cin, namaBuyer);
+                        cout << "input your home address: "<<endl;
+                        getline(cin, homeAddres);
+                        cout << "input your PhoneNumber: "<<endl;
+                        cin>>phoneNumber;
+                        cout << "\n=== Bank Account Setup ===" << endl;
+                        int bankId;
+                        string bankName;
+                        double balance;
+                        cout << "Enter Bank ID: ";
+                        cin >> bankId;
+                        cin.ignore();
+                        cout << "Enter Bank Account Name: ";
+                        getline(cin, bankName);
+                        cout << "Enter Initial Balance: ";
+                        cin >> balance;
+
+                        // Buat buyer baru
+
+                        cout << "\n=== Buyer Registered Successfully ===" << endl;
+
+                    }else if(regchoice ==2){
+                        cout<<"create seller account selected"<<endl;
+                    }else if(regchoice==3){
+                        cout<<"exiting"<<endl;
+                        regpromt = false;
+                    }else{
+                        cout<<"invalid option"<<endl;
+                    }
+
+                }
+
                 /* if register is selected then went throuhh registration process:
                 1. Create a new Buyer Account
                 Must provides: Name, Home Address, Phone number, Email
@@ -81,12 +149,7 @@ int main() {
                 After finished immediately logged in as Buyer/Seller
                 */
                 break;
-            case EXIT:
-                cout << "Exiting." << std::endl;
-                break;
-            default:
-                cout << "Invalid option." << endl;
-                break;
+            }
         }
         cout << endl;
     }
